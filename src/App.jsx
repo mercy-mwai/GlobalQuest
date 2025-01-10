@@ -11,8 +11,11 @@ const App =()=>{
 
 useEffect   (()=>{
     axios.
-    get('https://studies.cs.helsinki.fi/restcountries/api/all');
-})
+    get('https://studies.cs.helsinki.fi/restcountries/api/all')
+    .then(response =>
+        setCountries(response.data)
+    );
+}, [])
 
 
 
