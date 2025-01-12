@@ -7,17 +7,17 @@ const App =()=>{
     const[filteredCountries, setFilteredCountries]=useState([]);
     const [selectedCountry, setSelectedCountry]=useState(null);
     const [query, setQuery]=useState("");
-}
+
 
 useEffect   (()=>{
     axios.
     get('https://studies.cs.helsinki.fi/restcountries/api/all')
-    .then(response =>
-        setCountries(response.data)
-    );
+    .then (response=>{
+        console.log(response.data)
+    })
 }, [])
 
-
+}
 
 
 
