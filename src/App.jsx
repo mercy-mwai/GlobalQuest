@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CountryDetails from "./components/CountryDetails";
+import CountryList from "./components/CountryList";
 
 const App = () => {
   const [countries, setCountries] = useState([]);
@@ -8,19 +9,16 @@ const App = () => {
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
 
-  // Fetch countries data
   useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const response = await axios.get(
-          "https://studies.cs.helsinki.fi/restcountries/api/all"
-        );
+    axios
+      .get("https://studies.cs.helsinki.fi/restcountries/api/all")
+      .then((response) => {
+        console.log(response.data)
         setCountries(response.data);
-      } catch (error) {
+      })
+      .catch((error) => {
         console.error("Error fetching countries:", error);
-      }
-    };
-    fetchCountries();
+      });
   }, []);
 
   // Filter countries based on query
